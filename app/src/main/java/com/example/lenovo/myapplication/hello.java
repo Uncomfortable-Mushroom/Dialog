@@ -21,7 +21,7 @@ public class hello extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_hello);
         Button button1=(Button) findViewById(R.id.button1);
         button1.setOnClickListener(this);
-        Button button2=(Button) findViewById(R.id.button1);
+        Button button2=(Button) findViewById(R.id.button2);
         button2.setOnClickListener(this);
     }
     @Override
@@ -42,7 +42,7 @@ public class hello extends AppCompatActivity implements View.OnClickListener {
                 =new AlertDialog.Builder(hello.this);
         dialog.setTitle("提示信息");
         dialog.setMessage("请单击登录按钮");
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         dialog.setPositiveButton("确定",new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog,int which){
@@ -51,16 +51,22 @@ public class hello extends AppCompatActivity implements View.OnClickListener {
         dialog.show();
     }
     public void show2(){
+        LayoutInflater inflater=LayoutInflater.from(hello.this);
+        final View view=inflater.inflate(R.layout.h,null);
         final AlertDialog.Builder builder
                 =new AlertDialog.Builder(hello.this);
-        LayoutInflater inflater=getLayoutInflater();
-        View view=inflater.inflate(R.layout.activity_hello,null);
         builder.setTitle("登录界面");
         builder.setView(view);
-        builder.setPositiveButton("登陆",new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("登陆"
+                ,new DialogInterface.OnClickListener(){
             @Override
-            public void onClick(DialogInterface builder,int which){
-
+            public void onClick(DialogInterface builder,int Whichbutton){
+                final EditText user=view.findViewById(R.id.user);
+                final EditText pass=view.findViewById(R.id.pass);
+                if(user.getText().toString().equals("1")&&pass.getText().toString().equals("1"))
+                    Toast.makeText(hello.this, "登录成功", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(hello.this, "登录失败", Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
