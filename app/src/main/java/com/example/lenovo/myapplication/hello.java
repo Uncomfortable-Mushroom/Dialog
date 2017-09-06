@@ -63,7 +63,7 @@ public class hello extends AppCompatActivity implements View.OnClickListener {
             public void onClick(DialogInterface builder,int Whichbutton){
                 final EditText user=view.findViewById(R.id.user);
                 final EditText pass=view.findViewById(R.id.pass);
-                if(user.getText().toString().equals("1")&&pass.getText().toString().equals("1"))
+                if(user.getText().toString().equals("abc")&&pass.getText().toString().equals("123"))
                     Toast.makeText(hello.this, "登录成功", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(hello.this, "登录失败", Toast.LENGTH_SHORT).show();
